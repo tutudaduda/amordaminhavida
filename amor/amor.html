@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frases e Corações de Amor</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: url('amor2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+}
+
+    #container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+
+    .frase, .coracao {
+      position: absolute;
+      white-space: nowrap;
+      color: #fff;
+      font-size: 22px;
+      animation: cair linear;
+      opacity: 1;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .coracao {
+      color: pink;
+      font-size: 24px;
+    }
+
+    @keyframes cair {
+      0% {
+        top: -50px;
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+
+  <script>
+    const frases = [
+      "Eu te amo muito",
+      "Te amo meu amorzinho",
+      "Eu te amo como o mar, pois ninguém sabe o quão profundo ele é",
+      "Amo estar com você",
+      "Quero você pra sempre",
+      "Quero casar com você",
+      "Você é minha vida",
+      "Eu te amo daqui até o infinito",
+      "Meu amor por você nunca vai acabar",
+      "Meu bebezinho",
+      "Minha princesa",
+      "Meu amorzinho",
+      "Você é a mulher mais linda do mundo",
+      "Você é a melhor pessoa do mundo",
+      "Te amo muito, nao tenho palavras para descrever o quanto te amo",
+      
+    ];
+
+    function criarFrase() {
+      const container = document.getElementById("container");
+      const div = document.createElement("div");
+      div.className = "frase";
+      div.innerText = frases[Math.floor(Math.random() * frases.length)];
+
+      div.style.left = `${Math.random() * 90}vw`;
+      div.style.fontSize = `${18 + Math.random() * 6}px`;
+      div.style.animationDuration = `${12 + Math.random() * 5}s`;
+
+      container.appendChild(div);
+
+      setTimeout(() => div.remove(), 18000);
+    }
+
+    function criarCoracao() {
+      const container = document.getElementById("container");
+      const cor = document.createElement("div");
+      cor.className = "coracao";
+      cor.innerText = "💖";
+
+      cor.style.left = `${Math.random() * 95}vw`;
+      cor.style.fontSize = `${20 + Math.random() * 10}px`;
+      cor.style.animationDuration = `${14 + Math.random() * 6}s`;
+
+      container.appendChild(cor);
+
+      setTimeout(() => cor.remove(), 20000);
+    }
+
+    // Geração mais espaçada para melhor distribuição
+    setInterval(criarFrase, 800);
+    setInterval(criarCoracao, 500);
+  </script>
+</body>
+</html>
